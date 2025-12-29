@@ -63,11 +63,65 @@ const produits = [
 ];
 
 const productsName=produits.filter(p=>p.prix>50).map(p=>p.nom);
-console.log(productsName);
+// console.log(productsName);
+const firstOne=produits.find(p=>p.prix>50);
 
 
-div.innerHTML=`${productsName}`;
+div.innerHTML=`${productsName} <br> ${firstOne.nom}:${firstOne.prix}`;
 
 body.appendChild(div);
 }
 challenge4();
+
+// challenge5
+function challenge5(){
+const div=document.createElement("div");
+const A=[];
+for(let i=0;i<3;i++){
+    A[i]=[];
+    for(let j=0;j<3;j++){
+        A[i][j]="*";
+    }
+}
+ let display = "";
+    for (let i = 0; i < 3; i++) {
+        display += A[i].join(" ") + "<br>";
+    }
+
+const somme=A.flat().reduce((acc,n)=> acc+n,0 )   
+
+div.innerHTML=`${display} <br> SOMME=${somme}`;
+
+body.appendChild(div);
+}
+challenge5();
+
+
+function challenge6(){
+const div=document.createElement("div");
+const classe = {
+    nom: "noAIzone",
+    etudiants: [
+        {
+            nom: "Safaa",
+            notes: [12, 15, 18] 
+        },
+        {
+            nom: "Hiba",
+            notes: [10, 14, 16]
+        }
+    ]
+};
+const notesPremier = classe.etudiants[0].notes;
+
+let moyenne;
+
+if(notesPremier.length>0){
+    const somme=notesPremier.reduce((acc,n)=>acc+n,0);
+    moyenne=somme/notesPremier.length;
+}
+div.innerHTML=`${notesPremier} <br> Moyenne=${moyenne}`;
+
+body.appendChild(div);
+}
+challenge6();
